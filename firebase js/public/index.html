@@ -79,33 +79,85 @@
         const database = getDatabase(app);
       
         // Your existing code for reading data from Firebase
+        //const dataRef1 = ref(database, 'DHT_11/Humidity');
+        //const dataRef2 = ref(database, 'DHT_11/Temperature');
         const dataRef1 = ref(database, 'DHT_11/Humidity');
         const dataRef2 = ref(database, 'DHT_11/Temperature');
-      
-        onValue(dataRef1, (snapshot) => {
-                const humi = snapshot.val();
-                document.getElementById('humidity').innerHTML = humi + "%";
-            });
+        const dateTimeRef = ref(database, 'DateTime');
+        const locationRef = ref(database, 'Location');
 
-        onValue(dataRef2, (snapshot) => {
-                const temp = snapshot.val();
-                document.getElementById('temperature').innerHTML = temp + "&#8451;";
-            });
+        onValue(dataRef1, (snapshot) => {
+        const humi = snapshot.val();
+        document.getElementById('humidity').innerHTML = humi + "%";
+    });
+
+    onValue(dataRef2, (snapshot) => {
+        const temp = snapshot.val();
+        document.getElementById('temperature').innerHTML = temp + "&#8451;";
+    });
+
+    onValue(dateTimeRef, (snapshot) => {
+        const dateTime = snapshot.val();
+        document.getElementById('date').innerHTML = "Date: " + dateTime.Date;
+        document.getElementById('hour').innerHTML = "Hour: " + dateTime.Hour;
+        document.getElementById('minute').innerHTML = "Minute: " + dateTime.Minute;
+        document.getElementById('month').innerHTML = "Month: " + dateTime.Month;
+        document.getElementById('second').innerHTML = "Second: " + dateTime.Second;
+        document.getElementById('year').innerHTML = "Year: " + dateTime.Year;
+    });
+
+    onValue(locationRef, (snapshot) => {
+        const location = snapshot.val();
+        document.getElementById('latitude').innerHTML = "Latitude: " + location.Latitude;
+        document.getElementById('longitude').innerHTML = "Longitude: " + location.Longitude;
+    });
       </script>
       
 
-    <div class="data-head">DHT Sensor Realtime Readings</div>
+      <div class="data-head">DHT Sensor Realtime Readings</div>
 
-    <div class="data-container">
-        <div class="data-item">
-            <h2>Temperature</h2>
-            <p class="value" id="temperature">22 &#8451;</p>
-        </div>
-        <div class="data-item">
-            <h2>Humidity</h2>
-            <p class="value" id="humidity">10%</p>
-        </div>
-    </div>
+      <div class="data-container">
+          <div class="data-item">
+              <h2>Temperature</h2>
+              <p class="value" id="temperature">22 &#8451;</p>
+          </div>
+          <div class="data-item">
+              <h2>Humidity</h2>
+              <p class="value" id="humidity">10%</p>
+          </div>
+          <div class="data-item">
+              <h2>Date</h2>
+              <p class="value" id="date"></p>
+          </div>
+          <div class="data-item">
+              <h2>Hour</h2>
+              <p class="value" id="hour"></p>
+          </div>
+          <div class="data-item">
+              <h2>Minute</h2>
+              <p class="value" id="minute"></p>
+          </div>
+          <div class="data-item">
+              <h2>Month</h2>
+              <p class="value" id="month"></p>
+          </div>
+          <div class="data-item">
+              <h2>Second</h2>
+              <p class="value" id="second"></p>
+          </div>
+          <div class="data-item">
+              <h2>Year</h2>
+              <p class="value" id="year"></p>
+          </div>
+          <div class="data-item">
+              <h2>Latitude</h2>
+              <p class="value" id="latitude"></p>
+          </div>
+          <div class="data-item">
+              <h2>Longitude</h2>
+              <p class="value" id="longitude"></p>
+          </div>
+      </div>
 </script>
 <script scr="./js/firebase.js"></script>
 </body>
