@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DHT Readings</title>
+    <style type="text/css">
+        body {
+            background-color: #F5F5F5;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .data-container {
+            display: flex;
+            justify-content: space-between;
+            width: 50%;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #FFF;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .data-item {
+            text-align: center;
+        }
+
+        .data-item h2 {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .data-item p {
+            font-size: 48px;
+            font-weight: bold;
+            color: #6EB7FF;
+        }
+
+        .data-head {
+            margin: auto;
+            width: 50%;
+            text-align: center;
+            font-size: 45px;
+            font-weight: bold;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #FFF;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyBPGox7HPoz_hMhCxWDVz1iq3NXYL7mmQM",
+          authDomain: "gps-tracking-7ec2d.firebaseapp.com",
+          databaseURL: "https://gps-tracking-7ec2d-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "gps-tracking-7ec2d",
+          storageBucket: "gps-tracking-7ec2d.appspot.com",
+          messagingSenderId: "550295610562",
+          appId: "1:550295610562:web:31d1331495a282b38b475b",
+          measurementId: "G-F50PGNBNGM"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+      
+        // Your existing code for reading data from Firebase
+        const dataRef1 = ref(database, 'DHT_11/Humidity');
+        const dataRef2 = ref(database, 'DHT_11/Temperature');
+      
+        onValue(dataRef1, (snapshot) => {
+                const humi = snapshot.val();
+                document.getElementById('humidity').innerHTML = humi + "%";
+            });
+
+        onValue(dataRef2, (snapshot) => {
+                const temp = snapshot.val();
+                document.getElementById('temperature').innerHTML = temp + "&#8451;";
+            });
+      </script>
+      
+
+    <div class="data-head">DHT Sensor Realtime Readings</div>
+
+    <div class="data-container">
+        <div class="data-item">
+            <h2>Temperature</h2>
+            <p class="value" id="temperature">22 &#8451;</p>
+        </div>
+        <div class="data-item">
+            <h2>Humidity</h2>
+            <p class="value" id="humidity">10%</p>
+        </div>
+    </div>
+</script>
+<script scr="./js/firebase.js"></script>
+</body>
+</html>
