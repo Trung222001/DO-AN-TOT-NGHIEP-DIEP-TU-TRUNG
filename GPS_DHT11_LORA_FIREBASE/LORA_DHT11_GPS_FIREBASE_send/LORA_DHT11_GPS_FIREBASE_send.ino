@@ -126,7 +126,7 @@ void loop() {
 //   mySerial.println(String(Latitude) + "," + String(Longitude));
 //   Serial.println(String(year) + "," + String(month) + "," +String(date) + ","+String(hour) +","+String(minute) +","+String(second));
 //   mySerial.println(String(year) + "," + String(month) + "," +String(date) + ","+String(hour) +","+String(minute) +","+String(second));
-  delay(1000);
+  delay(500);
 }
 // float haversine(float lat1, float lon1, float lat2, float lon2) {
 //   float R = 6371000;  // Bán kính trái đất (đơn vị mét)
