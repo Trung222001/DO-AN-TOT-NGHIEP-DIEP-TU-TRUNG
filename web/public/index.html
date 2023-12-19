@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đồ án tốt nghiệp K42</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="shortcut icon" href="./img/qnu.ico">
+    <link rel="stylesheet" href="./index.css">
+
+</head>
+
+<body data-spy="scroll" data-target="#navResponsive" onload="realtimeClock()">
+    <!-- Start Home-->
+    <div id="home">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-dark bg-dark navbar-expand-md fixed-top">
+            <a href="#home" class="navbar-brand"><img src="./img/khoa.jpg" alt=""></a>
+            <button class="navbar-toggler" type="button" data-target="#navResponsive" data-toggle="collapse">
+                <span class="navbar-toggler-icon"></span>
+
+            </button>
+
+            <div class="collapse navbar-collapse" id="navResponsive">
+                <!-- <ul class="navbar-nav mr-auto"></ul>
+            <li class="nav-item"><a href="#khoakythuatcongnghe" class="nav-link">Khoa Kỹ Thuật và Công Nghệ</a></li>
+            </ul> -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-text">Khoa Kỹ Thuật và Công Nghệ</li>
+                    <li class="nav-text">
+                        Kỹ thuật Điện tử - viễn thông
+                        </li4>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a href="#home" class="nav-link">Trang chủ</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">Giám sát</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolios</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    <i class="fa-regular fa-laptop"></i>
+                </ul>
+            </div>
+        </nav>
+        <!-- End navigation -->
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- star landing img -->
+        <div class="landing">
+            <div class="home-wrap">
+                <div class="home-inner"></div>
+            </div>
+        </div>
+        <!-- end landing img -->
+
+        <!-- star landing content -->
+        <div class="col-12 caption">
+            <h1 class="text-uppercase text-light pb-3 pb-md-4">Đồ án tốt nghiệp </h1>
+            <h1 class="text-uppercase text-light pb-3 pb-md-4">Giám sát các thông số của phương tiện vận tải hàng hóa
+            </h1>
+            <a href="#about" class="btn btn-warning">Get start</a>
+            <div id="clock"></div>
+        </div>
+        <!-- end landing content -->
+    </div>
+    <!-- End Home-->
+
+
+
+
+
+
+
+    <!-- Star section -->
+    <!-- start them heading -->
+    <div class="row justify-content-center text-center py-4">
+        <div class="col-11 col-md-10 col-lg-9">
+            <h2>Nest Responsive Bootstrap Theme</h2>
+            <p class="lead">This website was built with HTL5, CSS3, Bootstrap4</p>
+            <a href="" class="btn btn-secondary btn-md">Complete Theme Course</a>
+        </div>
+    </div>
+    <!-- end heading -->
+
+    <!-- start jumpotron -->
+    <div class="jumbotron text-center offset" id="about">
+
+        <h2 class="heading">Giám sát</h2>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 col-lg-4 pb-4 pb-lg-2 about">
+                <i class="fas fa-desktop fa-3x"></i>
+                <h4 class="text-uppercase pt-3 pb-3">Thông tin Phương tiện</h4>
+                <h4>Biển số: 78 G1 - 16980</h4>
+                <h4>Tài xế : Diệp Từ Trung</h4>
+                <h4>Giới tính : Nam</h4>
+                <h4>Tuổi : 23</h4>
+            </div>
+            <div class="col-md-6 col-lg-4 pb-4 pb-lg-2 about">
+                <i class="fas fa-address-card fa-3x"></i>
+                <h4 class="text-uppercase pt-3 pb-3">Hàng hóa</h4>
+                <h4>Hải sản</h4>
+            </div>
+            <div class="col-md-6 col-lg-4 pb-4 pb-lg-2 about">
+                <i class="fas fa-arrow-circle-down fa-3x"></i>
+                <h4 class="text-uppercase pt-3 pb-3">Thời gian</h4>
+                <p class="lead" id="date"></p>
+                <p class="lead" id="time"></p>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- end jumpotron -->
+    <!-- </div> -->
+    <!-- end section -->
+
+
+
+
+
+
+
+
+
+
+    <!-- start portfolio section -->
+    <div id="portfolio" class="offset">
+        <div class="container-fluid text-center py-5 mx-0">
+            <h2 class="heading">Portfolios</h2>
+            <div class="row pt-4">
+                <!-- <div class="col-md-6 p-0 portfolio-item overflow-hidden">
+                
+                <a href="./img/portfolio/1.jpg" target="_blank">
+                    <img class="w-100"src="./img/portfolio/1.jpg" alt="">
+                </a>
+            </div> -->
+                <div class="col-md-6 p-0 portfolio-item overflow-hidden">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="lead">Nhiệt độ</p>
+                            <p class="lead" id="temperature"></p>
+                        </div>
+
+                        <div class="col-md-6 a">
+                            <i class="fa-solid fa-temperature-high"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 p-0 portfolio-item overflow-hidden">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="lead">Độ ẩm</p>
+                            <p class="lead" id="humidity"></p>
+                        </div>
+
+                        <div class="col-md-6 a">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-md-6 p-0 portfolio-item overflow-hidden">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="lead">Vận tốc</p>
+                            <p class="lead" id="speed"></p>
+                        </div>
+
+                        <div class="col-md-6 a">
+                            <i class="fa-solid fa-gauge"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 p-0 portfolio-item overflow-hidden">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="lead">Niêm phong</p>
+                            <p class="lead" id="doorStatus"></p>
+                        </div>
+                        <div class="col-md-6 a">
+                            <i class="fa-solid fa-door-open"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-10">
+                    <p class="lead mt-5 mb-4">This is an example of using .overflow-auto on an element
+                        with set width and height dimensions. By design, this content will vertically scroll</p>
+                    <a href="#contact" class="btn btn-secondary">Get in touch</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end portfolio section -->
+
+
+
+
+
+
+
+
+
+    <div id="testimonial" class="offset">
+        <div class="jumbotron text-center pd-5 mb-0">
+            <h2 class="heading">Testimonial</h2>
+
+            <div class="row justify-content-center">
+                <div class="col-11 col-md-10">
+                    <div class="row pt-3">
+
+                        <div class="col-md-6 pd-5">
+                            <div class="cart rounded-0 mx-lg-4 mx-lg-5">
+                                <img src="./img/testimonials/bb.jpg" alt="" class="card-img-top rounded-0">
+                                <div class="card-body">
+                                    <h4>Ronaldo</h4>
+                                    <p class="lead border-top pt-3">
+                                        Nest features a full screen, responsive landing page using Bootstrap 4
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 pd-5">
+                            <div class="cart rounded-0 mx-lg-4 mx-lg-5">
+                                <img src="./img/testimonials/aa.png" alt="" class="card-img-top rounded-0">
+                                <div class="card-body">
+                                    <h4>Messi</h4>
+                                    <p class="lead border-top pt-3">
+                                        Nest features a full screen, responsive landing page using Bootstrap 4
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="contact" class="offset">
+        <div class="container-fluid footer">
+            <div class="row pt-4 justify-content-center">
+                <div class="col-sm-11 col-md-9 col-lg-6 text-light text-center">
+                    <img src="./img/nest.png" alt="">
+                    <p class="lead pt-4">Simplicity and ease of use are key features
+                        of MDB 5 UI Kit. You need only one minute to install and run it.</p>
+                    <ul class="social pt-3">
+                        <li><a href="" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                        <li><a href="" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="" target="_blank"><i class="fab fa-youtube"></i></a></li>
+                        <li><a href="" target="_blank"><i class="fab fa-github"></i></a></li>
+                        <li><a href="" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <hr class="socket w-100 mt-5">
+            <p class="pb-2 text-light text-center ">
+                &copy; <a href="" target="_blank">Nguyễn Lê Thành Tâm<main></main></a>
+            </p>
+            <p class="pb-2 text-light text-center ">
+                <a href="https://w3newbie.com/tutorials/" target="_blank">w3newbie</a>
+            </p>
+
+        </div>
+
+    </div>
+    <!-- link to Js file -->
+    <script src="./index.js"></script>
+    <!-- Firebase Scripts -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-database.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBPGox7HPoz_hMhCxWDVz1iq3NXYL7mmQM",
+            authDomain: "gps-tracking-7ec2d.firebaseapp.com",
+            databaseURL: "https://gps-tracking-7ec2d-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "gps-tracking-7ec2d",
+            storageBucket: "gps-tracking-7ec2d.appspot.com",
+            messagingSenderId: "550295610562",
+            appId: "1:550295610562:web:31d1331495a282b38b475b",
+            measurementId: "G-F50PGNBNGM"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+
+        // Your existing code for reading data from Firebase
+        const dataRef1 = ref(database, 'DHT_11/Humidity');
+        const dataRef2 = ref(database, 'DHT_11/Temperature');
+        const dateTimeRef = ref(database, 'DateTime');
+        const locationRef = ref(database, 'Location');
+        const doorRef = ref(database, 'DoorStatus');
+        const speedRef = ref(database, 'Speed');
+        onValue(dataRef1, (snapshot) => {
+            const humi = snapshot.val();
+            document.getElementById('humidity').innerHTML = humi + "%";
+        });
+
+        onValue(dataRef2, (snapshot) => {
+            const temp = snapshot.val();
+            document.getElementById('temperature').innerHTML = temp + "&#8451;";
+        });
+        onValue(doorRef, (snapshot) => {
+            const door = snapshot.val();
+            if(door == false){
+            document.getElementById('doorStatus').innerHTML = "Trạng thái: đóng";
+            }else{
+                document.getElementById('doorStatus').innerHTML = "Trạng thái: mở";  
+            }
+        });
+        onValue(speedRef, (snapshot) => {
+            const speed = snapshot.val();
+            document.getElementById('speed').innerHTML = "Vận tốc: " + speed + "Km/h";
+        });
+        onValue(dateTimeRef, (snapshot) => {
+            const dateTime = snapshot.val();
+            document.getElementById('date').innerHTML = "Ngày: " + dateTime.Date + " / " + dateTime.Month + " / " + dateTime.Year;
+            document.getElementById('time').innerHTML = "Giờ: " + dateTime.Hour + " / " + dateTime.Minute + " / " + dateTime.Second;
+        });
+
+        onValue(locationRef, (snapshot) => {
+            const location = snapshot.val();
+            document.getElementById('latitude').innerHTML = "Latitude: " + location.Latitude;
+            document.getElementById('longitude').innerHTML = "Longitude: " + location.Longitude;
+
+            // Update Google Maps link
+            const mapLinkElement = document.getElementById('map-link');
+            const mapLink = `https://www.google.com/maps?q=${location.Latitude},${location.Longitude}`;
+            mapLinkElement.href = mapLink;
+            mapLinkElement.innerHTML = "View on Google Maps";
+        });
+    </script>
+
+    <script src="./js/firebase.js"></script>
+</body>
+
+</html>
