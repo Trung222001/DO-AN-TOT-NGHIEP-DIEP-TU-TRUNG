@@ -50,7 +50,10 @@ html, body{
 .navbar-nav .nav-link.active {
     color: #00b3ff!important;
 }
-
+/* .custom-background {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+ */
 
 
 
@@ -128,7 +131,7 @@ html, body{
     display: table;
     position: fixed;
 
-    background-image: url(./img/landing.jpg);
+    background-image: url(./img/background.jpg);
     
     background-size: cover;
     background-position: center center;
@@ -149,7 +152,7 @@ html, body{
 
 }
 .footer img{
-    height: 2rem;
+    height: 7rem;
 }
 .footer a{
     text-decoration: none;
@@ -188,4 +191,20 @@ html, body{
     margin-bottom: 20px;
     font-size: 110px;
     color:rgb(84, 129, 197);
+}
+
+.a1 i{
+    margin-bottom: 20px;
+    font-size: 200px;
+    color:rgb(212, 13, 13);
+}
+
+.a2 i{
+    margin-bottom: 20px;
+    font-size: 200px;
+    color:rgb(8, 198, 49);
+}
+.lead1{
+    font-size: 50px;
+    color: blue;
 }

@@ -34,14 +34,22 @@
                     <li class="nav-text">Khoa Kỹ Thuật và Công Nghệ</li>
                     <li class="nav-text">
                         Kỹ thuật Điện tử - viễn thông
-                        </li4>
+                        </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="#home" class="nav-link">Trang chủ</a></li>
-                    <li class="nav-item"><a href="#about" class="nav-link">Giám sát</a></li>
-                    <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolios</a></li>
-                    <li class="nav-item"><a href="#testimonial" class="nav-link">testimonial</a></li>
-                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="#numberCar" class="nav-link">Danh sách xe</a></li>
+                    
+                    <!-- <li class="nav-item"><a href="#car1" class="nav-link">xe 1</a></li>
+                    <li class="nav-item"><a href="#parameter1" class="nav-link">thông số 1 </a></li>
+               
+                    <li class="nav-item"><a href="#car2" class="nav-link">xe 2</a></li>
+                    <li class="nav-item"><a href="#parameter2" class="nav-link">thông số 2 </a></li> -->
+                    <!-- <li class="nav-item"><a href="#portfolio" class="nav-link">Thông tin</a></li> -->
+                    <li class="nav-item"><a href="#testimonial" class="nav-link">Giới thiệu</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Cá nhân</a></li>
+                         <!-- <li class="nav-item"><a href="#about" class="nav-link">xe 1</a></li> -->
+                    
                 </ul>
             </div>
         </nav>
@@ -57,10 +65,12 @@
 
         <!-- star landing content -->
         <div class="col-12 caption">
-            <h1 class="text-uppercase text-light pb-3 pb-md-4">Đồ án tốt nghiệp </h1>
-            <h1 class="text-uppercase text-light pb-3 pb-md-4">Giám sát các thông số của phương tiện vận tải
+            <h1 class="text-uppercase text-dark pb-3 pb-md-4 custom-background" ><b>Đồ án tốt nghiệp</b></h1>
+            <!-- style="color: white; background-color: rgba(255, 255, 255, 0.7);" -->
+            
+            <h1 class="text-uppercase text-dark ">Giám sát các thông số của phương tiện vận tải
             </h1>
-            <a href="#about" class="btn btn-info">Bắt đầu</a>
+            <a href="#numberCar" class="btn btn-info">Bắt đầu</a>
             <div id="clock"></div>
         </div>
         <!-- end landing content -->
@@ -68,48 +78,290 @@
     <!-- End Home-->
     <!-- Star section -->
     <!-- start them heading -->
-    <div class="row justify-content-center text-center py-4">
+    <!-- <div class="row justify-content-center text-center py-4">
         <div class="col-11 col-md-10 col-lg-9">
             <h2>Nest Responsive Bootstrap Theme</h2>
             <p class="lead">This website was built with HTL5, CSS3, Bootstrap4</p>
             <a href="" class="btn btn-secondary btn-md">Complete Theme Course</a>
         </div>
-    </div>
+    </div> -->
     <!-- end heading -->
-
-    <!-- start jumpotron -->
-    <div class="jumbotron text-center offset" id="about">
-
-        <h2 class="heading">Giám sát</h2>
+    <!-- chọn xe -->
+    <div class="jumbotron text-center offset" id="numberCar">
+        <h2 class="heading">Danh sách các xe</h2>
         <div class="row justify-content-center mt-5">
-            <div class="col-md-6 col-lg-4 pb-4 pb-lg-2 about">
-                <i class="fas fa-desktop fa-3x"></i>
-                <h5 class="text-uppercase pt-3 pb-3">Thông tin Phương tiện</h5>
-                <h4>Biển số: 78 G1 - 16980</h4>
-                <h4>Tài xế : Diệp Từ Trung</h4>
-                <h4>Giới tính : Nam</h4>
-                <h4>Tuổi : 23</h4>
+            <div class="col-md-6 col-lg-3 pb-6 pb-lg-2 numberCar">
+                <div class="col-md-6 a1">
+                    <li class="nav-item"><a href="#car1" class="nav-link"><i class="fa-solid fa-car"></i></a></li>
+                    <!-- <i class="fa-solid fa-car"></i> -->
+                    <h5 class="text-uppercase pt-3 pb-3">78 G1 - 16980</h5>
+                </div>
             </div>
-            <div class="col-md-6 col-lg-4 pb-4 pb-lg-2 about">
-                <i class="fas fa-address-card fa-3x"></i>
-                <h5 class="text-uppercase pt-3 pb-3">Hàng hóa</h5>
+            <div class="col-md-6 col-lg-3 pb-6 pb-lg-2 numberCar">
+                <div class="col-md-6 a2">
+                    <li class="nav-item"><a href="#car2" class="nav-link"><i class="fa-solid fa-car"></i></a></li>
+                    <!-- <i class="fa-solid fa-car"></i> -->
+                    <h5 class="text-uppercase pt-3 pb-3">77 G1 - 23456</h5>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- end chọn xe -->
+    <div class="jumbotron text-center offset" id="car1">
+
+        <h2 class="heading">Thông tin 1</h2>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 col-lg-3 pb-4 pb-lg-2 car1">
+                <!-- <i class="fas fa-desktop fa-3x"></i> -->
+                <i class="fa-solid fa-car fa-3x"></i>
+                <h5 class="text-uppercase pt-3 pb-3">Thông tin Phương tiện 1</h5>
+                <h5>Biển số: 78 G1 - 16980</h5>
+                <h5>Tài xế : Diệp Từ Trung</h5>
+                <h5>Giới tính : Nam</h5>
+                <h5>Tuổi : 23</h5>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-4 pb-lg-2 car1">
+                <i class="fa-solid fa-truck-fast fa-3x"></i>
+                <h5 class="text-uppercase pt-3 pb-3">Hàng hóa 1</h5>
                 <h4>Hải sản</h4>
             </div>
-            <div class="col-md-6 col-lg-4 pb-4 pb-lg-2 about">
-                <i class="fas fa-arrow-circle-down fa-3x"></i>
-                <h4 class="text-uppercase pt-3 pb-3">Thời gian</h4>
+            <div class="col-md-6 col-lg-3 pb-4 pb-lg-2 car1">
+                <i class="fa-solid fa-clock fa-3x"></i>
+                <h4 class="text-uppercase pt-3 pb-3">Thời gian 1</h4>
+                <p class="lead" style="color: blue;" id="date"></p>
+                <p class="lead" style="color: blue;" id="time"></p>
+                </p>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-4 pb-lg-2 car1">
+                <i class="fa-solid fa-location-dot fa-3x"></i>
+                <h4 class="text-uppercase pt-3 pb-3">vị trí 1</h4>
+                <p class="lead" style="color: blue;" id="latitude"></p>
+                <p class="lead" style="color: blue;" id="longitude"></p>
+                <a href="#" id="map-link" class="btn btn-info"></a>
+                </p>
+            </div>
+        </div>
+        <div id="parameter1" class="offset">
+            <div class="container-fluid text-center py-5 mx-0">
+                <!-- <h2 class="heading">Thông số 1</h2> -->
+                <div class="row pt-4">
+                    <div class="col-md-4 parameter1-item overflow-hidden">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="lead">Nhiệt độ 1</p>
+                                <p class="lead1" id="temperature"></p>
+                            </div>
+    
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-temperature-high"></i>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-4 p-0 parameter1-item overflow-hidden">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="lead">Độ ẩm 1</p>
+                                <p class="lead1" id="humidity"></p>
+                            </div>
+    
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-droplet"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-0 parameter1-item overflow-hidden">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="lead">Nhiên liệu 1</p>
+                                <p class="lead" style="color: blue;">(Thử nghiệm)</p>
+                            </div>
+    
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-gas-pump"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-5">
+                    <div class="col-md-4 p-0 parameter1-item overflow-hidden">
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <p class="lead">Vận tốc 1</p>
+                                <p class="lead1" id="speed"></p>
+                            </div>
+    
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-gauge"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-0 parameter1-item overflow-hidden">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="lead">Niêm phong 1</p>
+                                <p class="lead1" id="doorStatus"></p>
+                            </div>
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-door-open"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-0 parameter1-item overflow-hidden">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="lead">Mức tiêu thụ nhiên liệu</p>
+                                <p class="lead" style="color: blue;">(Thử nghiệm)</p>
+                            </div>
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-chart-simple"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- <div class="row justify-content-center">
+                    <div class="col-10">
+                        <p class="lead mt-5 mb-4">Nhấn vào bên dưới để xem vị trí phương tiện 1</p>
+                        <a href="#contact" class="btn btn-info">xem vị trí 1</a> -->
+        
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- start jumpotron -->
+    <div class="jumbotron text-center offset" id="car2">
+
+        <h2 class="heading">Thông tin 2</h2>
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-6 col-lg-3 pb-4 pb-lg-2 car2">
+                <i class="fa-solid fa-car fa-3x"></i>
+                <h5 class="text-uppercase pt-3 pb-3">Thông tin Phương tiện 2</h5>
+                <h5>Biển số: 77 G1 - 23456</h5>
+                <h5>Tài xế : Võ Chí tâm</h5>
+                <h5>Giới tính : Nam</h5>
+                <h5>Tuổi : 23</h5>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-4 pb-lg-2 car2">
+                <i class="fa-solid fa-truck-fast fa-3x"></i>
+                <h5 class="text-uppercase pt-3 pb-3">Hàng hóa 2</h5>
+                <h4>Nông sản</h4>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-4 pb-lg-2 car2">
+                <i class="fa-solid fa-clock fa-3x"></i>
+                <h4 class="text-uppercase pt-3 pb-3">Thời gian 2</h4>
                 <p class="lead" id="date"></p>
                 <p class="lead" id="time"></p>
                 </p>
+            </div>
+            <div class="col-md-6 col-lg-3 pb-4 pb-lg-2 car2">
+                <i class="fa-solid fa-location-dot fa-3x"></i>
+                <h4 class="text-uppercase pt-3 pb-3">vị trí 2</h4>
+                <p class="lead"  id="latitude"></p>
+                <p class="lead" id="longitude"></p>
+                <a href="#" class="btn btn-info">xem vị trí 2</a>
+                </p>
+            </div>
+        </div>
+        <div id="parameter2" class="offset">
+            <div class="container-fluid text-center py-1 mx-0">
+                <!-- <h2 class="heading">Thông số 1</h2> -->
+                <div class="row pt-4">
+                    <div class="col-md-4 p-0 parameter2-item overflow-hidden">
+    
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="lead">Nhiệt độ 2</p>
+                                <p class="lead" id="temperature"></p>
+                            </div>
+    
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-temperature-high"></i>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-4 p-0 parameter2-item overflow-hidden">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="lead">Độ ẩm 2</p>
+                                <p class="lead" id="humidity"></p>
+                            </div>
+    
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-droplet"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-0 parameter1-item overflow-hidden">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="lead">Nhiên liệu 1</p>
+                                <p class="lead">(Thử nghiệm)</p>
+                            </div>
+    
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-gas-pump"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row pt-5">
+                    <div class="col-md-4 p-0 parameter2-item overflow-hidden">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="lead">Vận tốc 2</p>
+                                <p class="lead" id="speed"></p>
+                            </div>
+    
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-gauge"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-0 parameter2-item overflow-hidden">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="lead">Niêm phong 2</p>
+                                <p class="lead" id="doorStatus"></p>
+                            </div>
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-door-open"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 p-0 parameter1-item overflow-hidden">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="lead">Mức tiêu thụ nhiên liệu</p>
+                                <p class="lead">(Thử nghiệm)</p>
+                            </div>
+                            <div class="col-md-6 a">
+                                <i class="fa-solid fa-chart-simple"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row justify-content-center">
+                    <div class="col-10">
+                        <p class="lead mt-5 mb-4">Nhấn vào bên dưới để xem vị trí phương tiện 1</p>
+                        <a href="#contact" class="btn btn-info">xem vị trí 1</a>
+         -->
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!-- end jumpotron -->
   
     <!-- start portfolio section -->
-    <div id="portfolio" class="offset">
+    <!-- <div id="portfolio" class="offset">
         <div class="container-fluid text-center py-5 mx-0">
-            <h2 class="heading">Portfolios</h2>
+            <h2 class="heading">Thông số</h2>
             <div class="row pt-4">
                 <div class="col-md-6 p-0 portfolio-item overflow-hidden">
 
@@ -166,17 +418,18 @@
             </div>
             <div class="row justify-content-center">
                 <div class="col-10">
-                    <p class="lead mt-5 mb-4">This is an example of using .overflow-auto on an element
-                        with set width and height dimensions. By design, this content will vertically scroll</p>
-                    <a href="#contact" class="btn btn-secondary">Get in touch</a>
+                    <p class="lead mt-5 mb-4">Nhấn vào bên dưới để xem vị trí phương tiện</p>
+                    <a href="#contact" class="btn btn-info">xem vị trí</a>
+    
+                    </p>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- end portfolio section -->
     <div id="testimonial" class="offset">
         <div class="jumbotron text-center pd-5 mb-0">
-            <h2 class="heading">Testimonial</h2>
+            <h2 class="heading">Chi tiết</h2>
 
             <div class="row justify-content-center">
                 <div class="col-11 col-md-10">
@@ -218,9 +471,10 @@
         <div class="container-fluid footer">
             <div class="row pt-4 justify-content-center">
                 <div class="col-sm-11 col-md-9 col-lg-6 text-light text-center">
-                    <img src="./img/nest.png" alt="">
-                    <p class="lead pt-4">Simplicity and ease of use are key features
-                        of MDB 5 UI Kit. You need only one minute to install and run it.</p>
+                    <img src="./img/khoa.jpg" alt="">
+                    <p class="lead pt-4">Khoa Kỹ Thuật và Công Nghệ<p></p>
+                        Trường Đại học Quy Nhơn</p>
+                        <p>trungdiep77@gmail.com</p>
                     <ul class="social pt-3">
                         <li><a href="" target="_blank"><i class="fab fa-facebook"></i></a></li>
                         <li><a href="" target="_blank"><i class="fab fa-twitter"></i></a></li>
@@ -232,7 +486,7 @@
             </div>
             <hr class="socket w-100 mt-5">
             <p class="pb-2 text-light text-center ">
-                &copy; <a href="" target="_blank">Nguyễn Lê Thành Tâm<main></main></a>
+                &copy; <a href="" target="_blank">Diệp Từ Trung<main></main></a>
             </p>
             <p class="pb-2 text-light text-center ">
                 <a href="https://w3newbie.com/tutorials/" target="_blank">w3newbie</a>
