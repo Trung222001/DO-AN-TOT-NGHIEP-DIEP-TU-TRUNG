@@ -50,6 +50,9 @@ html, body{
 .navbar-nav .nav-link.active {
     color: #00b3ff!important;
 }
+/* .custom-background {
+    background-color:  background-color: rebeccapurple;
+} */
 
 
 
@@ -63,8 +66,6 @@ html, body{
 .btn{
     padding: 5px;
 }
-
-
 
 .heading{
     text-transform: uppercase;
@@ -149,7 +150,7 @@ html, body{
 
 }
 .footer img{
-    height: 2rem;
+    height: 7rem;
 }
 .footer a{
     text-decoration: none;
@@ -189,3 +190,25 @@ html, body{
     font-size: 110px;
     color:rgb(84, 129, 197);
 }
+
+.a1 i{
+    margin-bottom: 20px;
+    font-size: 200px;
+    color:rgb(212, 13, 13);
+}
+
+.a2 i{
+    margin-bottom: 20px;
+    font-size: 200px;
+    color:rgb(8, 198, 49);
+}
+.lead1{
+    font-size: 50px;
+    color: blue;
+}
+/* .textBackground a{
+    height: 100px;
+            width:  100px;
+            background: green;
+            border-radius: 50px;
+} */
