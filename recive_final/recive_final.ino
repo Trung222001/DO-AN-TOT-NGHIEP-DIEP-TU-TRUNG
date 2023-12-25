@@ -11,18 +11,18 @@
 //Provide the RTDB payload printing info and other helper functions.
 #include "addons/RTDBHelper.h"
 
-SoftwareSerial mySerial(D3, D0); //TX, RX
+SoftwareSerial mySerial(D3, D0);  //TX, RX
 
 TinyGPSPlus gps;
-SoftwareSerial SerialGPS(3, 2); 
-SH1106 display(0x3C, D2, D1); 
+SoftwareSerial SerialGPS(3, 2);
+SH1106 display(0x3C, D2, D1);
 const int signal = D4;
 const int chipSelect = 15;
 const char* ssid = "VNPT_Hung Huong";
 const char* password = "12345678";
 #define DATABASE_URL "https://gps-tracking-7ec2d-default-rtdb.asia-southeast1.firebasedatabase.app/"
 #define API_KEY "AIzaSyBPGox7HPoz_hMhCxWDVz1iq3NXYL7mmQM"
- 
+#define GPIO_PIN 9
 FirebaseData fbdo;
 
 FirebaseAuth auth;
@@ -30,9 +30,9 @@ FirebaseConfig config;
 unsigned long sendDataPrevMillis = 0;
 int count = 0;
 bool signupOK = false;
-float Latitude , Longitude;
-int year , month , date, hour , minute , second;
-String DateString , TimeString , LatitudeString , LongitudeString;
+float Latitude, Longitude;
+int year, month, date, hour, minute, second;
+String DateString, TimeString, LatitudeString, LongitudeString;
 float lastLatitude = 0.0;
 float lastLongitude = 0.0;
 unsigned long lastTime = 0;
@@ -41,12 +41,12 @@ float temperature = 0.0;
 float humidity = 0.0;
 int doorStatus;
 WiFiServer server(80);
-               
+
 void setup() {
   Serial.begin(9600);
   mySerial.begin(9600);
   SerialGPS.begin(9600);
-  //pinMode(buzzerPin, OUTPUT);
+  pinMode(GPIO_PIN, OUTPUT);
   display.init();
   display.flipScreenVertically();
   display.clear();
@@ -66,17 +66,16 @@ void setup() {
 
   /* Assign the RTDB URL (required) */
   config.database_url = DATABASE_URL;
-  if (Firebase.signUp(&config, &auth, "", "")){
+  if (Firebase.signUp(&config, &auth, "", "")) {
     Serial.println("ok");
     signupOK = true;
-  }
-  else{
+  } else {
     Serial.printf("%s\n", config.signer.signupError.message.c_str());
   }
 
   /* Assign the callback function for the long running token generation task */
-  config.token_status_callback = tokenStatusCallback; //see addons/TokenHelper.h
-  
+  config.token_status_callback = tokenStatusCallback;  //see addons/TokenHelper.h
+
   Firebase.begin(&config, &auth);
   Firebase.reconnectWiFi(true);
   if (!SD.begin(chipSelect)) {
@@ -89,10 +88,10 @@ void setup() {
 
 void loop() {
 
- // String inputReceive = "";
+  // String inputReceive = "";
 
-if (mySerial.available() > 0)
-{ String data = mySerial.readStringUntil('\n');  // Read data until newline character
+  if (mySerial.available() > 0) {
+    String data = mySerial.readStringUntil('\n');  // Read data until newline character
 
     // Split the received data into temperature, humidity, and door status
     int firstCommaIndex = data.indexOf(',');
@@ -113,26 +112,27 @@ if (mySerial.available() > 0)
       Serial.print(" %, Door Status: ");
 
       if (doorStatus == 0) {
+        turnOffGPIO();
         Serial.println("Closed");
       } else if (doorStatus == 1) {
         Serial.println("Open");
+        turnOnGPIO();
       } else {
         Serial.println("Invalid");
       }
       sendDoorStatusToFirebase(doorStatus);
-      
     }
     //  displayInfoOnOLED(DateString, TimeString, temperature, humidity, speed);
-  sendTemperatureAndHumidityToFirebase(temperature, humidity);
-}
+    sendTemperatureAndHumidityToFirebase(temperature, humidity);
+  }
 
-   while (SerialGPS.available() > 0) {
+  while (SerialGPS.available() > 0) {
     if (gps.encode(SerialGPS.read())) {
       if (gps.location.isValid()) {
         Latitude = gps.location.lat();
-        LatitudeString = String(Latitude , 6);
+        LatitudeString = String(Latitude, 6);
         Longitude = gps.location.lng();
-        LongitudeString = String(Longitude , 6);
+        LongitudeString = String(Longitude, 6);
         Serial.print("Latitude: ");
         Serial.println(Latitude, 6);
         Serial.print("Longitude: ");
@@ -190,14 +190,15 @@ if (mySerial.available() > 0)
           TimeString += '0';
         TimeString += String(second);
       }
-      sendDateTimeToFirebase(year,month,date,hour,minute,second);
+      sendDateTimeToFirebase(year, month, date, hour, minute, second);
     }
   }
+
   displayInfoOnOLED(DateString, TimeString, temperature, humidity, speed);
-  
+
   if (SD.begin(chipSelect)) {
     // Log data to SD card
-    logDataToSD(temperature, humidity, hour, minute, second, date, month, year, Longitude, Latitude, speed,doorStatus);
+    logDataToSD(temperature, humidity, hour, minute, second, date, month, year, Longitude, Latitude, speed, doorStatus);
     // Ensure to close the SD card connection
     SD.end();
   } else {
@@ -219,8 +220,7 @@ void sendLocationToFirebase(float latitude, float longitude) {
     if (Firebase.RTDB.setFloat(&fbdo, "Location/Latitude", latitude)) {
       Serial.print("Latitude : ");
       Serial.println(latitude);
-    }
-    else {
+    } else {
       Serial.println("Failed to send Latitude to Firebase");
       Serial.println("REASON: " + fbdo.errorReason());
     }
@@ -229,8 +229,7 @@ void sendLocationToFirebase(float latitude, float longitude) {
     if (Firebase.RTDB.setFloat(&fbdo, "Location/Longitude", longitude)) {
       Serial.print("Longitude : ");
       Serial.println(longitude);
-    }
-    else {
+    } else {
       Serial.println("Failed to send Longitude to Firebase");
       Serial.println("REASON: " + fbdo.errorReason());
     }
@@ -238,14 +237,13 @@ void sendLocationToFirebase(float latitude, float longitude) {
 }
 void sendDateTimeToFirebase(int year, int month, int date, int hour, int minute, int second) {
   if (Firebase.ready() && signupOK) {
-    String dateTimePath = "DateTime"; // Đường dẫn trên Firebase Realtime Database
+    String dateTimePath = "DateTime";  // Đường dẫn trên Firebase Realtime Database
 
     // Gửi năm lên Firebase
     if (Firebase.RTDB.setInt(&fbdo, dateTimePath + "/Year", year)) {
       Serial.print("Year: ");
       Serial.println(year);
-    }
-    else {
+    } else {
       Serial.println("Failed to send Year to Firebase");
       Serial.println("REASON: " + fbdo.errorReason());
     }
@@ -254,8 +252,7 @@ void sendDateTimeToFirebase(int year, int month, int date, int hour, int minute,
     if (Firebase.RTDB.setInt(&fbdo, dateTimePath + "/Month", month)) {
       Serial.print("Month: ");
       Serial.println(month);
-    }
-    else {
+    } else {
       Serial.println("Failed to send Month to Firebase");
       Serial.println("REASON: " + fbdo.errorReason());
     }
@@ -264,8 +261,7 @@ void sendDateTimeToFirebase(int year, int month, int date, int hour, int minute,
     if (Firebase.RTDB.setInt(&fbdo, dateTimePath + "/Date", date)) {
       Serial.print("Date: ");
       Serial.println(date);
-    }
-    else {
+    } else {
       Serial.println("Failed to send Date to Firebase");
       Serial.println("REASON: " + fbdo.errorReason());
     }
@@ -274,8 +270,7 @@ void sendDateTimeToFirebase(int year, int month, int date, int hour, int minute,
     if (Firebase.RTDB.setInt(&fbdo, dateTimePath + "/Hour", hour)) {
       Serial.print("Hour: ");
       Serial.println(hour);
-    }
-    else {
+    } else {
       Serial.println("Failed to send Hour to Firebase");
       Serial.println("REASON: " + fbdo.errorReason());
     }
@@ -284,8 +279,7 @@ void sendDateTimeToFirebase(int year, int month, int date, int hour, int minute,
     if (Firebase.RTDB.setInt(&fbdo, dateTimePath + "/Minute", minute)) {
       Serial.print("Minute: ");
       Serial.println(minute);
-    }
-    else {
+    } else {
       Serial.println("Failed to send Minute to Firebase");
       Serial.println("REASON: " + fbdo.errorReason());
     }
@@ -294,8 +288,7 @@ void sendDateTimeToFirebase(int year, int month, int date, int hour, int minute,
     if (Firebase.RTDB.setInt(&fbdo, dateTimePath + "/Second", second)) {
       Serial.print("Second: ");
       Serial.println(second);
-    }
-    else {
+    } else {
       Serial.println("Failed to send Second to Firebase");
       Serial.println("REASON: " + fbdo.errorReason());
     }
@@ -306,8 +299,7 @@ void sendTemperatureAndHumidityToFirebase(float temperature, float humidity) {
     if (Firebase.RTDB.setFloat(&fbdo, "DHT_11/Temperature", temperature)) {
       Serial.print("Temperature : ");
       Serial.println(temperature);
-    }
-    else {
+    } else {
       Serial.println("Failed to send temperature to Firebase");
       Serial.println("REASON: " + fbdo.errorReason());
     }
@@ -315,8 +307,7 @@ void sendTemperatureAndHumidityToFirebase(float temperature, float humidity) {
     if (Firebase.RTDB.setFloat(&fbdo, "DHT_11/Humidity", humidity)) {
       Serial.print("Humidity : ");
       Serial.println(humidity);
-    }
-    else {
+    } else {
       Serial.println("Failed to send humidity to Firebase");
       Serial.println("REASON: " + fbdo.errorReason());
     }
@@ -327,8 +318,7 @@ void sendSpeedToFirebase(float speed) {
     if (Firebase.RTDB.setFloat(&fbdo, "Speed", speed)) {
       Serial.print("Speed sent to Firebase: ");
       Serial.println(speed);
-    }
-    else {
+    } else {
       Serial.println("Failed to send speed to Firebase");
       Serial.println("REASON: " + fbdo.errorReason());
     }
@@ -346,26 +336,26 @@ void displayInfoOnOLED(String date, String time, float temperature, float humidi
   display.drawString(0, 12, "Time: " + time);
 
   // Display Temperature and Humidity
-  display.drawString(0,24 , "Temp: " + String(temperature) + " C");
-  display.drawString(0,36 , "Humidity: " + String(humidity) + " %");
+  display.drawString(0, 24, "Temp: " + String(temperature) + " C");
+  display.drawString(0, 36, "Humidity: " + String(humidity) + " %");
 
   // Display Speed
-  display.drawString(0,48 , "Speed: " + String(speed) + " km/h");
-  display.drawString(95, 24 , "door: " );
+  display.drawString(0, 48, "Speed: " + String(speed) + " km/h");
+  display.drawString(95, 24, "door: ");
   display.display();  // Update the display
 }
-void displayInfoOnOLED1( int doorStatus) {
- //  display.clear();  // Clear the display before updating information
+void displayInfoOnOLED1(int doorStatus) {
+  //  display.clear();  // Clear the display before updating information
   display.setTextAlignment(TEXT_ALIGN_LEFT);
   display.setFont(ArialMT_Plain_10);
- if (doorStatus == 0) {
-    display.drawString(95, 36 , "closed " );
-      } else if (doorStatus == 1) {
-       display.drawString(95, 36 , "open " );
-      } else {
-       display.drawString(95, 36 , "error " );
-      }
- display.display();  // Update the display
+  if (doorStatus == 0) {
+    display.drawString(95, 36, "closed ");
+  } else if (doorStatus == 1) {
+    display.drawString(95, 36, "open ");
+  } else {
+    display.drawString(95, 36, "error ");
+  }
+  display.display();  // Update the display
 }
 void logDataToSD(float temperature, float humidity, int hour, int minute, int second, int date, int month, int year, float longitude, float latitude, float speed, int doorStatus) {
   File dataFile = SD.open("datalog.csv", FILE_WRITE);
@@ -418,4 +408,11 @@ void sendDoorStatusToFirebase(bool doorStatus) {
       Serial.println("REASON: " + fbdo.errorReason());
     }
   }
+}
+void turnOnGPIO() {
+  digitalWrite(GPIO_PIN, HIGH);  // Bật chân GPIO 9
+}
+
+void turnOffGPIO() {
+  digitalWrite(GPIO_PIN, LOW);  // Tắt chân GPIO 9
 }
